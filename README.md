@@ -4,6 +4,8 @@
 
 ### 🔗 [View Live Demo](https://fun-fact-ivory.vercel.app) 
 
+---
+
 ## ✨ Features
 
 * **Full-Stack Architecture:** Separates frontend UI logic from backend API fetching.
@@ -70,22 +72,22 @@ Your Express server exposes the following endpoints:
 
 ### Get a Random Fact
 
-\`\`\`http
+```http
 GET /api/fun-fact
-\`\`\`
+```
 **Response:**
-\`\`\`json
+```json
 {
   "fact": "The average person falls asleep in seven minutes.",
   "timestamp": "2026-03-17T12:00:00.000Z"
 }
-\`\`\`
+```
 
 ### Get Multiple Facts
 
-\`\`\`http
+```http
 GET /api/fun-facts/:count
-\`\`\`
+```
 *(Note: Maximum of 10 facts per request)*
 
 ---
