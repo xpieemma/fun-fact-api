@@ -2,9 +2,7 @@
 
  A clean, responsive full-stack web application that serves up random, interesting facts on demand. Built with a lightweight Vanilla JS frontend and a Node.js/Express backend, optimized for serverless deployment on Vercel.
 
-### 🔗 [View Live Demo](https://fun-fact-ivory.vercel.app)
-
----
+### 🔗 [View Live Demo](https://fun-fact-ivory.vercel.app) 
 
 ## ✨ Features
 
@@ -25,7 +23,7 @@
 
 ## 📂 Project Structure
 
-\`\`\`text
+```text
 /
 ├── api/
 │   └── index.js       # Express.js backend & API routes
@@ -35,7 +33,7 @@
 ├── styles.css         # UI Styling
 ├── package.json       # Project dependencies & scripts
 └── vercel.json        # Serverless routing configuration
-\`\`\`
+```
 
 ---
 
@@ -44,23 +42,24 @@
 To run this project locally on your machine:
 
 1. **Clone the repository:**
-   \`\`\`bash
+   ```bash
    git clone https://github.com/xpieemma/fun-fact-api
    cd fun-fact
-   \`\`\`
+   ```
 
 2. **Install dependencies:**
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. **Start the development server:**
-   \`\`\`bash
+   
+   ```bash
    npm run dev
-   \`\`\`
+   ```
    *This uses `nodemon` to automatically restart the server upon file changes.*
 
-4. **Open your browser:**
+1. **Open your browser:**
    Navigate to `http://localhost:3000`
 
 ---
