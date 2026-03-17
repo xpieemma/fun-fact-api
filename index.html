@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Daily Grind · Fun Fact</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <span class="coffee-icon">☕</span> The Daily Grind
+    </h1>
+    <div class="subhead">fresh fun fact ·.· every click</div>
+
+    <div id="factDisplay" class="fact-card loading">✨ click below for today's fun fact</div>
+
+    <div class="button-group">
+      <button class="btn" id="newFactBtn">↻ new fact</button>
+      <button class="btn btn-secondary" id="shareBtn" title="copy fact to clipboard">📋 copy</button>
+    </div>
+
+    <div id="errorMessage" class="error-message"></div>
+
+    <div class="timestamp">
+      <span id="factTime"></span>
+      <span>⚡ from our api</span>
+    </div>
+
+    <footer>
+      <a href="https://uselessfacts.jsph.pl/" target="_blank" rel="noopener">facts by uselessfacts.jsph.pl</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

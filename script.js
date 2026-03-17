@@ -1,40 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Daily Grind · Fun Fact</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="container">
-    <h1>
-      <span class="coffee-icon">☕</span> The Daily Grind
-    </h1>
-    <div class="subhead">fresh fun fact · every click</div>
 
-    <div id="factDisplay" class="fact-card loading">✨ click below for today's fun fact</div>
 
-    <div class="button-group">
-      <button class="btn" id="newFactBtn">↻ new fact</button>
-      <button class="btn btn-secondary" id="shareBtn" title="copy fact to clipboard">📋 share</button>
-    </div>
-
-    <div id="errorMessage" class="error-message"></div>
-
-    <div class="timestamp">
-      <span id="factTime"></span>
-      <span>⚡ from our api</span>
-    </div>
-
-    <footer>
-      <a href="https://uselessfacts.jsph.pl/" target="_blank" rel="noopener">facts by uselessfacts.jsph.pl</a>
-    </footer>
-  </div>
-
-  <script>
-    
-    const API_BASE = ''; 
+const API_BASE = ''; 
 
     const factEndpoint = `${API_BASE}/api/fun-fact`;
 
@@ -44,14 +10,14 @@
     const newFactBtn = document.getElementById('newFactBtn');
     const shareBtn = document.getElementById('shareBtn');
 
-    // Helper: format timestamp nicely
+    // format timestamp nicely
     function formatTime(isoString) {
       if (!isoString) return '';
       const date = new Date(isoString);
       return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
 
-    // Helper: show error (and hide after a few seconds)
+    // how error (and hide after a few seconds)
     function showError(message) {
       errorDiv.textContent = message;
       errorDiv.classList.add('show');
@@ -60,7 +26,7 @@
       }, 5000);
     }
 
-    // Main fetch function
+    
     async function fetchFact() {
       // set loading state
       factDisplay.textContent = '🔍 fetching your fact...';
@@ -71,7 +37,6 @@
         const response = await fetch(factEndpoint);
 
         if (!response.ok) {
-          // try to get error details from response body (if any)
           let details = '';
           try {
             const errorData = await response.json();
@@ -109,12 +74,12 @@
     // Fetch a fact on page load
     fetchFact();
 
-    // Event listeners
+ 
     newFactBtn.addEventListener('click', fetchFact);
 
     shareBtn.addEventListener('click', async () => {
       const fact = factDisplay.textContent;
-      // don't copy placeholder or error messages
+   
       if (!fact || factDisplay.classList.contains('loading') || fact.startsWith('⚠️') || fact.startsWith('🔍')) {
         showError('No fact to share yet!');
         return;
@@ -125,12 +90,9 @@
         // temporary visual feedback
         shareBtn.textContent = '✓ copied!';
         setTimeout(() => {
-          shareBtn.textContent = '📋 share';
+          shareBtn.textContent = '📋 Copy';
         }, 1500);
       } catch (err) {
         showError('Could not copy to clipboard');
       }
     });
-  </script>
-</body>
-</html>

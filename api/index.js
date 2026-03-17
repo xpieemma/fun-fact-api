@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const app = express();
 
+
 // Middleware for logging 
 app.use((req, res, next) => {
   const timestamp = new Date().toISOString();
@@ -10,14 +11,14 @@ app.use((req, res, next) => {
   next();
 });
 
-// Create a configured axios instance for the Useless Facts API
+// a configured axios instance for the Useless Facts API
 const uselessFactsClient = axios.create({
   baseURL: 'https://uselessfacts.jsph.pl/api/v2/facts',
   timeout: 5000,
   headers: { 'Accept': 'application/json' }
 });
 
-// Add interceptors 
+// interceptors 
 uselessFactsClient.interceptors.request.use(
   config => {
     console.log('Fetching random fact from external API...');
@@ -37,7 +38,7 @@ uselessFactsClient.interceptors.response.use(
   }
 );
 
-// Single fact endpoint
+// fact endpoint
 app.get('/api/fun-fact', async (req, res) => {
   try {
     const response = await uselessFactsClient.get('/random');
@@ -72,12 +73,12 @@ app.get('/api/fun-facts/:count', async (req, res) => {
 });
 
 // Root route 
-app.get('/', (req, res) => {
-  res.send(`
-    <h1>Welcome to The Daily Grind Fun Fact API</h1>
-    <p>Try <a href="/api/fun-fact">/api/fun-fact</a></p>
-  `);
-});
+// app.get('/', (req, res) => {
+//   res.send(`
+//     <h1>Welcome to The Daily Grind Fun Fact API</h1>
+//     <p>Try <a href="/api/fun-fact">/api/fun-fact</a></p>
+//   `);
+// });
 
 // Error handling helper
 function handleError(error, res) {
@@ -91,5 +92,13 @@ function handleError(error, res) {
   }
 }
 
-// Export the Express app as a serverless function
+
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 30000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+
 export default app;
